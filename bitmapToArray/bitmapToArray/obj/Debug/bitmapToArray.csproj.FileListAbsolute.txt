@@ -1,0 +1,15 @@
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\bitmapToArray.csprojAssemblyReference.cache
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\bitmapToArray.Properties.Resources.resources
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\bitmapToArray.csproj.GenerateResource.cache
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\bitmapToArray.csproj.CoreCompileInputs.cache
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\bitmapToArray.Form1.resources
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\bin\Debug\LEDBoard Controller.exe.config
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\bin\Debug\LEDBoard Controller.exe
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\bin\Debug\LEDBoard Controller.pdb
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\LEDBoard Controller.exe
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\LEDBoard Controller.pdb
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\bin\Debug\LEDBoard Controller.exe.manifest
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\bin\Debug\LEDBoard Controller.application
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\LEDBoard Controller.TrustInfo.xml
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\LEDBoard Controller.exe.manifest
+C:\Users\xxins\source\repos\bitmapToArray\bitmapToArray\obj\Debug\LEDBoard Controller.application
