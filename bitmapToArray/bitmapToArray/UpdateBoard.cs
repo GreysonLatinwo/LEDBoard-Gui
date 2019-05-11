@@ -8,20 +8,20 @@ namespace bitmapToArray
 {
     internal class UpdateBoard
     {
-        string strMatrix = "";
-        Socket sender;
+        string strMatrix = ""; 
         string[,] matrix = new string[20, 20];
 
-        
+
 
         public void bitmapColorAssocator(Bitmap image1)
         {
-            for (int x = 0; x < image1.Width; x++)
+            for (int y = 0; y < image1.Height; y++)
             {
-                for (int y = 0; y < image1.Height; y++)
+                for (int x = 0; x < image1.Width; x++)
                 {
                     Color pixel = image1.GetPixel(x, y);
-                    if (pixel.Name == "ff000000" || pixel.R <= MyGlobalVars.blackThreashold && pixel.G <= MyGlobalVars.blackThreashold && pixel.B <= MyGlobalVars.blackThreashold)
+                    int avgRGB = (pixel.R + pixel.G + pixel.B) / 3;
+                    if (pixel.Name == "ff000000" || pixel.R <= MyGlobalVars.blackThreashold && pixel.G <= MyGlobalVars.blackThreashold && pixel.B <= MyGlobalVars.blackThreashold && avgRGB < 64)
                     {
                         matrix[x, y] = "-1 ";
                     }
@@ -33,7 +33,43 @@ namespace bitmapToArray
                         && pixel.G >= pixel.B - MyGlobalVars.whiteThreashold && pixel.G <= pixel.B + MyGlobalVars.whiteThreashold
                         && pixel.B >= pixel.R - MyGlobalVars.whiteThreashold && pixel.B <= pixel.R + MyGlobalVars.whiteThreashold)
                     {
-                        matrix[x, y] = "-3 ";
+                        
+                        if (avgRGB > 255)
+                        {
+                            matrix[x, y] = "-2 ";
+                        }
+                        else if (avgRGB > 224)
+                        {
+                            matrix[x, y] = "-9 ";
+                        }
+                        else if (avgRGB > 192)
+                        {
+                            matrix[x, y] = "-8 ";
+                        }
+                        else if (avgRGB > 160)
+                        {
+                            matrix[x, y] = "-7 ";
+                        }
+                        else if (avgRGB > 128)
+                        {
+                            matrix[x, y] = "-6 ";
+                        }
+                        else if (avgRGB > 96)
+                        {
+                            matrix[x, y] = "-5 ";
+                        }
+                        else if (avgRGB > 64)
+                        {
+                            matrix[x, y] = "-4 ";
+                        }
+                        else if (avgRGB > 32)
+                        {
+                            matrix[x, y] = "-3 ";
+                        }
+                        else if (avgRGB > 0)
+                        {
+                            matrix[x, y] = "-1 ";
+                        }
                     }
                     else
                     {
@@ -65,7 +101,7 @@ namespace bitmapToArray
         {
             makeStrMatrix(bmp);
             byte[] bytes = new byte[2048];
-            
+
 
             // Connect to a remote device.  
             try
@@ -92,6 +128,7 @@ namespace bitmapToArray
 
                     // Send the data through the socket.  
                     int bytesSent = sender.Send(msg);
+                    Console.WriteLine("Bytes sent: {0}", bytesSent);
                 }
                 catch (ArgumentNullException ane)
                 {

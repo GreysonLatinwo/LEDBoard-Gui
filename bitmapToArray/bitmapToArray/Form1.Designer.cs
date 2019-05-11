@@ -143,6 +143,7 @@
             this.bitmapDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bitmapDisplay.TabIndex = 3;
             this.bitmapDisplay.TabStop = false;
+            this.bitmapDisplay.Click += new System.EventHandler(this.bitmapDisplay_Click);
             // 
             // button3
             // 

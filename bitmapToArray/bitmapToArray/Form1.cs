@@ -20,54 +20,9 @@ namespace bitmapToArray
         {
             InitializeComponent();
         }
-        private static void DownloadRemoteImageFile(string uri, string fileName)
+        private void DownloadRemoteImageFile(string uri, string fileName)
         {
-            HttpWebResponse response = null;
-            HttpWebRequest request = null;
-            if (uri == "")
-                return;
-            try {
-                request = (HttpWebRequest)WebRequest.Create(uri);
-                response = (HttpWebResponse)request.GetResponse();
-            }catch(Exception ex){
-                Console.WriteLine(ex);
-                return;
-            }
 
-            // Check that the remote file was found. The ContentType
-            // check is performed since a request for a non-existent
-            // image file might be redirected to a 404-page, which would
-            // yield the StatusCode "OK", even though the image was not
-            // found.
-            if ((response.StatusCode == HttpStatusCode.OK ||
-                response.StatusCode == HttpStatusCode.Moved ||
-                response.StatusCode == HttpStatusCode.Redirect) &&
-                response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))
-            {
-
-                // if the remote file was found, download it
-                try
-                {
-                    Stream outputStream = File.Create(fileName);
-                    using (Stream inputStream = response.GetResponseStream())
-                    //using (Stream outputStream = File.Create(fileName))
-                    {
-                        byte[] buffer = new byte[4096];
-                        int bytesRead;
-                        do
-                        {
-                            bytesRead = inputStream.Read(buffer, 0, buffer.Length);
-                            outputStream.Write(buffer, 0, bytesRead);
-                        } while (bytesRead != 0);
-                        inputStream.Close();
-                        outputStream.Close();
-                    }
-                    
-                }catch(Exception e) {
-                    Console.WriteLine(e);
-                    
-                }
-            }
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -141,7 +96,8 @@ namespace bitmapToArray
                     bitmapDisplay.Image = currentImage;
                 }
             }
-            
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -193,14 +149,19 @@ namespace bitmapToArray
             Bitmap Newbmp;
 
             string filename = "tempURLpic.bmp";
-            DownloadRemoteImageFile(picURL, filename);
+            DownloadRemoteImageFile d = new DownloadRemoteImageFile(picURL, filename);
+           
             Image URLpic = new Bitmap(filename);
-
             picCompress Comp = new picCompress();
             Newbmp = Comp.compress(URLpic);
 
             currentImage = Newbmp;
             bitmapDisplay.Image = currentImage;
+        }
+
+        private void bitmapDisplay_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

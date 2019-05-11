@@ -9,8 +9,6 @@ namespace bitmapToArray
 {
     internal class ConverterBitmap
     {
-        Socket sender;
-
         string [,] matrix = new string[20,20];
         string strMatrix = "";
         int whiteThreashold = 12;

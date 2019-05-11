@@ -10,8 +10,6 @@ namespace bitmapToArray
 {
     internal class BitmapAnimations
     {
-        Socket sender;
-
         string[,] matrix = new string[20, 20];
         string strMatrix = "";
         int whiteThreashold = 12;
@@ -110,6 +108,7 @@ namespace bitmapToArray
 
                     // Send the data through the socket.  
                     int bytesSent = sender.Send(msg);
+                    Console.WriteLine("Bytes Sent: {0}", bytesSent);
                 }
                 catch (ArgumentNullException ane)
                 {
